@@ -25,5 +25,6 @@ WORKDIR /go/src/github.com/cockroachdb
 RUN git clone https://github.com/cockroachdb/cockroach
 WORKDIR /go/src/github.com/cockroachdb/cockroach
 RUN make build
+WORKDIR /go/src/github.com/cockroachdb/cockroach/pkg/cmd/cockroach
 
-CMD ["sh", "-c", "/bin/bash"]
+CMD ["dlv", "debug", "--headless", "--listen=:2345", "--api-version=2"]
